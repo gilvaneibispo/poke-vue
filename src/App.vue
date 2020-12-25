@@ -1,84 +1,76 @@
 <template>
     <div id="app">
-        <input v-model="text" type="text">
-        <div class="container is-widescreen">
-            <div v-for="(poke, index) in pokes" :key="poke.name" class="box">
+        <GBHeader></GBHeader>
 
-                <Poke :pokemon="poke" :index="index"></Poke>
-            </div>
-        </div>
+        <transition name="trans-route" mode="out-in">
+            <router-view></router-view>
+        </transition>
+
+
+        <GBFooter></GBFooter>
     </div>
 </template>
 
 <script>
-    /*
-    * Ler depois de apresnder mais: https://constkhi.github.io/vue-simple-alert
-    * */
-    //import HelloWorld from './components/HelloWorld.vue'
-    import axios from 'axios'
-    import Poke from './components/Poke.vue'
-    //import vmodal from 'vue-js-modal'
+
+    /* Ler depois de apresnder mais: https://constkhi.github.io/vue-simple-alert */
+
+    //import Poke from './components/GBPoke.vue'
+    import GBHeader from "./components/GBHeader";
+    import GBFooter from "./components/GBFooter";
+    //import GBContent from "./components/GBContent";
 
     export default {
         name: 'App',
         components: {
-            Poke
-        },
-        data() {
-            return {
-                apiUrl: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=100",
-                pokes: [],
-                text: ""
-            }
-        },
-        created() {
-            axios.get(this.apiUrl).then((response) => {
-                this.pokes = response.data.results;
-                console.log(this.pokes);
-            });
-        },
-        watch: {
-            text: function (valUpdated, valPrevius) {
-
-                console.log(valPrevius);
-                console.log(valUpdated);
-            }
+            GBFooter,
+            GBHeader
         }
     }
 </script>
 
 <style>
-    #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-        padding: 15px;
+
+    @import "/fontawesome-free/css/all.css";
+
+    .text-gray-100 {
+        color: rgb(225, 225, 225) !important;
     }
 
-    .box:hover{
-        background-color: #fcfcfc;
+    .text-gray-200 {
+        color: rgb(200, 200, 200) !important;
     }
 
-    @media only screen and (max-width: 468px) {
-        .box {
-            padding: 1rem 0.7rem;
-        }
+    .text-gray-300 {
+        color: rgb(180, 180, 180) !important;
     }
 
-    /*
-    article:first-child {
-        padding-bottom: 1rem;
+    .text-gray-400 {
+        color: rgb(160, 160, 160) !important;
     }
 
-    article:hover {
-
+    .text-gray-500 {
+        color: rgb(140, 140, 140) !important;
     }
 
-    .media + .media {
-        margin-top: 0 !important;
-        padding-bottom: 1rem;
-    }*/
+    .text-gray-600 {
+        color: rgb(120, 120, 120) !important;
+    }
+
+    .text-gray-700 {
+        color: rgb(100, 100, 100) !important;
+    }
+
+    .text-gray-800 {
+        color: rgb(80, 80, 80) !important;
+    }
+
+    .text-gray-900 {
+        color: rgb(50, 50, 50) !important;
+    }
+
+    .text-gray {
+    }
+
+
 </style>
