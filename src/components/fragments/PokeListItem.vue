@@ -17,7 +17,7 @@
                     <!--
                     <i class="fas fa-mail-bulk"></i>
                     -->
-                    <small class="text-gray-500">{{pokeType}}</small>
+                  <small class="text-gray-500"><em>{{pokeType}}</em></small>
                 </div>
                 <small><a class="button is-primary is-small" @click.prevent="vref(goToEachPoke(pokemon.name))" >+</a></small>
             </div>
@@ -44,7 +44,7 @@
     * */
 
     export default {
-        name: "GBPoke",
+        name: "PokeListItem",
       components: {Loading},
       props: {
             index: Number,

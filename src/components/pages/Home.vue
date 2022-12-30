@@ -1,38 +1,52 @@
 <template>
   <div class="container is-widescreen gb-main-container gb-box-page">
 
-    <div class="columns">
-      <div class="column is-align-content-center">
-        <h3 class="title is-3 has-text-centered">Encontre seu Pokemon favorito</h3>
+    <div v-if="!isLoading">
+      <div class="columns">
+        <div class="column is-align-content-center">
+          <h3 class="title is-3 has-text-centered">Encontre seu Pokemon favorito</h3>
+        </div>
       </div>
-    </div>
 
-    <div v-for="(poke, index) in pokes" :key="poke.name" class="box">
-      <GBPoke :index="index + 1" :pokemon="poke"></GBPoke>
-    </div>
+      <div v-for="(poke, index) in pokes" :key="poke.name" class="box">
+        <poke-list-item :index="index + 1" :pokemon="poke"></poke-list-item>
+      </div>
 
-    <div class="gb-alert-load">
-      <div class="message is-link">
-        <div v-if="loadingMore" class="message-body">
-          Carregando...
+      <div class="gb-alert-load">
+        <div class="message is-link">
+          <div v-if="loadingMore" class="message-body">
+            Carregando...
+          </div>
         </div>
       </div>
     </div>
-
+    <div v-else>
+      <div class="gb-alert-preload">
+        <div class="message is-link">
+          <div class="message-body">
+            Carregando...
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import GBPoke from "@/components/fragments/GBPoke";
+import PokeListItem from "@/components/fragments/PokeListItem";
 import axios from "axios";
 import {poke_api} from "@/app_config";
 
 export default {
   name: "Home",
-  components: {GBPoke},
+  components: {PokeListItem},
+
+  /*
   comments: {
-    GBPoke //: () => import('./GBPoke')
+    PokeListItem
   },
+
+   */
   data() {
     return {
       pokes: [],
@@ -41,6 +55,7 @@ export default {
       api_limit: 20,
       isEndPage: false,
       loadingMore: false,
+      isLoading: true
     }
   },
   mounted() {
@@ -56,6 +71,9 @@ export default {
       });
 
       this.loadingMore = false;
+
+      if (this.isLoading)
+        this.isLoading = false;
 
 
       console.log(response);
@@ -101,6 +119,8 @@ export default {
 </script>
 
 <style scoped>
+
+.gb-alert-preload,
 .gb-alert-load {
   display: flex;
   position: fixed;
@@ -110,6 +130,12 @@ export default {
   padding: 0 3rem 2rem 3rem;
   justify-content: center;
 }
+
+.gb-alert-preload{
+  position: relative;
+  margin-bottom: calc(100vh - 16rem);
+}
+
 
 .message {
   display: inline-block;

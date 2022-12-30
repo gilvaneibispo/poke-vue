@@ -10,7 +10,7 @@
     - [Índice](#índice)
     - [Resumo do projeto](#resumo-do-projeto)
     - [Funcionalidades do projeto](#funcionalidades-do-projeto)
-    - [Técnicas e tecnologias utilizadas](#técnicas-e-tecnologias-utilizadas)
+    - [Técnicas e tecnologias utilizadas](#tecnologias-utilizadas)
     - [Acesso ao projeto](#acesso-ao-projeto)
     <!-- - [Rodar o projeto](#rodar-o-projeto)-->
 
@@ -24,10 +24,11 @@ conceitos de desenvolvimento com Vue.JS, tentando simular as condições necess�
 - `Funcionalidade 1`: Listar de Pokemon's;
 - `Funcionalidade 2`: Visualizar informações dos Pokemon's;
 
-### Técnicas e tecnologias utilizadas
+### Tecnologias utilizadas
 
-- `VueJS`
+- `Vue.JS`
 - `Bulma CSS`
+- `PokeAPI`
 
 ### Acesso ao projeto
 
