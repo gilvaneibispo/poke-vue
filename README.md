@@ -1,4 +1,4 @@
-# Poke
+# Poke Vue.JS
 
 <!-- ![Logo UPTAdmin](http://www.upt.uefs.br/uploads/img/logo_upt_admin.png) -->
 
@@ -6,7 +6,7 @@
 
 ### Índice
 
-- [UPTAdmin](#uptadmin)
+- [Poke Vue.JS](#poke-vue)
     - [Índice](#índice)
     - [Resumo do projeto](#resumo-do-projeto)
     - [Funcionalidades do projeto](#funcionalidades-do-projeto)
@@ -32,8 +32,6 @@ conceitos de desenvolvimento com Vue.JS, tentando simular as condições necess�
 ### Acesso ao projeto
 
 Clone este projeto por meio de SSH ou link HTTPS, ou ainda, baixe o código compactado.
-
-<-- ### Rodar o projeto -->
 
 #### Após clonar o projeto seguindo um dos passos acima, inici o npm.
 
