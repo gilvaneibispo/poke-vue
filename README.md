@@ -1,4 +1,4 @@
-# Poke Vue.JS
+# Poke.JS
 
 <!-- ![Logo UPTAdmin](http://www.upt.uefs.br/uploads/img/logo_upt_admin.png) -->
 
