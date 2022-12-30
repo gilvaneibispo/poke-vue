@@ -1,0 +1,1 @@
+export const poke_api = "https://pokeapi.co/api/v2/pokemon"

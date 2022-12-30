@@ -3,7 +3,10 @@
 
         <div class="media-left">
             <figure class="image is-64x64">
-                <img :src="imgUrl" v-bind:title="imgTitle" alt="Image front">
+                <div v-if="isLoading">
+                  <loading/>
+                </div>
+                <img v-else :src="imgUrl" v-bind:title="imgTitle" alt="Image front">
                 <a href="#" class="toggleBtn" @click="toggleImg($event)"></a>
             </figure>
         </div>
@@ -31,6 +34,7 @@
 
 <script>
     import axios from "axios";
+    import Loading from "@/components/fragments/Loading";
     //import ModalBody from './ModalBody.vue';
 
     /*
@@ -41,12 +45,14 @@
 
     export default {
         name: "GBPoke",
-        props: {
+      components: {Loading},
+      props: {
             index: Number,
             pokemon: Object
         },
         data() {
             return {
+                isLoading: true,
                 imgFrontUrl: "",
                 imgBackUrl: "",
                 imgUrl: "",
@@ -79,7 +85,7 @@
                 }
             },
             goToEachPoke(pokename){
-                return "/pokemon/" + pokename;
+                return "/" + pokename;
             }
         },
 
@@ -96,6 +102,8 @@
                 this.imgTitle = "Imagem frontal do pokemon " + this.pokemon.name + ".";
 
                 this.pokeType = response.data.types[0].type.name;
+
+                this.isLoading = false;
             });
         },
     }
@@ -107,6 +115,13 @@
         display: none;
     }
 
+    img{
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     .content {
         display: flex;
         justify-content: space-between;
@@ -153,7 +168,7 @@
         padding: 0;
         line-height: 1.3;
         border-radius: 0.18rem;
-        background-image: url("../assets/icons/update-img.png");
+        background-image: url("../../assets/icons/update-img.png");
         background-size: 80%;
         background-position: center;
         background-repeat: no-repeat;
